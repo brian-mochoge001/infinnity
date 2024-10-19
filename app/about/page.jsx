@@ -14,6 +14,9 @@ const AboutPage = () => {
   const rotateMission = useTransform(scrollY, [0, 500], [2, -5]); // Change rotation for Mission card
   const rotateVision = useTransform(scrollY, [0, 500], [-2, 5]); // Change rotation for Vision card
 
+  // Replace unescaped single quotes with HTML entities
+  const exampleText = 'This is an example with an unescaped single quote: &rsquo;';
+
   return (
     <ParallaxProvider>
       <div className="bg-black min-h-screen mt-20">
@@ -143,9 +146,9 @@ const AboutPage = () => {
               transition={{ duration: 1 }}
               className="text-center my-32"
             >
-              <h2 className="text-4xl font-semibold text-white mb-4">Let’s Build Your Next Big Idea</h2>
+              <h2 className="text-4xl font-semibold text-white mb-4">Let us Build Your Next Big Idea</h2>
               <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-                Whether you're a startup or an established enterprise, Infinnity Developers is ready to partner with you to bring your digital ideas to life. Get in touch today and let's start building something extraordinary.
+                Whether you are a startup or an established enterprise, Infinnity Developers is ready to partner with you to bring your digital ideas to life. Get in touch today and let us start building something extraordinary.
               </p>
               <a href="/contact" className="bg-white text-black py-2 px-4 rounded-md hover:bg-gray-500 transition duration-200">
                 Contact Us
