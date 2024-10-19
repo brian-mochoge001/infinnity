@@ -25,3 +25,36 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Add this to your global CSS or a specific CSS module */
+.modal {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+  border: none; /* Remove border */
+  border-radius: 20px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  z-index: 1000; /* Ensure the modal is above other content */
+  transition: opacity 0.3s ease-in-out; /* Fade effect for modal */
+  opacity: 0; /* Start hidden */
+}
+
+.modal:open {
+  opacity: 1; /* Show modal */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75); /* Dark overlay */
+  z-index: 999; /* Ensure the overlay is below the modal */
+  transition: opacity 0.3s ease-in-out; /* Fade effect for overlay */
+}
