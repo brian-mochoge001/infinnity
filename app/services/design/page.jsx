@@ -2,10 +2,10 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='h-screen flex items-center'>
-      about
+    <div className='flex justify-center items-center my-6'>
+      <div></div>
     </div>
   )
 }
-           
+
 export default page

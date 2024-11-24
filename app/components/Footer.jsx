@@ -28,7 +28,7 @@ const Footer = () => {
             <div key={index} className="flex flex-col gap-6">
               <h2 className="font-bold text-white md:text-2xl">{item.title}</h2>
               {item.links.map((link, linkIndex) => (
-                <a key={linkIndex} href="#" className="text-gray-300 font-light text-sm md:text-[15px] hover:text-gray-300">
+                <a key={linkIndex} href="/about" className="text-gray-300 font-light text-sm md:text-[15px] hover:text-gray-300">
                   {link}
                 </a>
               ))}

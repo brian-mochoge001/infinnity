@@ -58,3 +58,14 @@ body {
   z-index: 999; /* Ensure the overlay is below the modal */
   transition: opacity 0.3s ease-in-out; /* Fade effect for overlay */
 }
+
+.masonry-grid {
+  display: flex;
+  margin-bottom: 15px; /* Adjust based on your grid gap */
+  width: auto;
+}
+
+.masonry-grid_column {
+  margin-bottom: 15px;
+  background-clip: padding-box;
+}

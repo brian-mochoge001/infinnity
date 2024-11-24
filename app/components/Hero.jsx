@@ -1,3 +1,4 @@
+'use client'
 import React, { useRef, useEffect } from 'react';
 import moon from '../assets/moon.png';
 import moonmd from '../assets/moonmd.png';
@@ -55,7 +56,7 @@ const Hero = () => {
             muted
             playsInline
             className="w-auto h-full object-cover"
-          >
+          >\
             <source src="/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

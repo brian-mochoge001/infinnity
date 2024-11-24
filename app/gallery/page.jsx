@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { TfiClose } from "react-icons/tfi";
 import Modal from 'react-modal'; 
+import Masonry from 'react-masonry-css'; // Import Masonry
 
 const galleryItems = [
   { id: 1, src: '/gallery/image1.jpg', type: 'image', description: 'Sony xm4 website' },
@@ -23,7 +24,7 @@ const galleryItems = [
   { id: 15, src: '/gallery/image9.jpg', type: 'image', description: 'Security Products' },
   { id: 16, src: '/gallery/image11.jpg', type: 'image', description: 'Taxi App' },
   { id: 17, src: '/gallery/video4.mp4', type: 'video', description: 'Restaurant Menu design' },
-  { id: 18, src: '/gallery/image12.jpg', type: 'image', description: 'Brand Landing Page' },
+  { id: 18, src: '/gallery/image3.jpg', type: 'image', description: 'Brand Landing Page' },
   { id: 19, src: '/gallery/image13.jpg', type: 'image', description: 'Description for Design1' },
   { id: 20, src: '/gallery/image14.jpg', type: 'image', description: 'Description for Design2' },
 ];
@@ -31,7 +32,7 @@ const galleryItems = [
 const GalleryPage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [hoveredItem, setHoveredItem] = useState(null); // State for hovered item
+  const [hoveredItem, setHoveredItem] = useState(null);
 
   const openModal = (item) => {
     setSelectedItem(item);
@@ -44,21 +45,25 @@ const GalleryPage = () => {
   };
 
   const handleContextMenu = (e) => {
-    e.preventDefault(); // Disable right-click context menu
+    e.preventDefault();
   };
 
   return (
-    <div className="container mx-auto mt-20 p-8">
-      <h1 className="text-4xl font-bold text-center mb-8">Our Catalog Designs</h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="container mx-auto mt-28">
+      <h1 className="text-4xl font-bold text-center mb-12">Our Catalog Designs</h1>
+      <Masonry
+        breakpointCols={{ default: 4, 1100: 2, 700: 2, 500: 1 }} // Adjust breakpoints
+        className="masonry-grid" // Custom class for styling
+        columnClassName="masonry-grid_column" // Custom class for columns
+      >
         {galleryItems.map((item) => (
           <div 
             key={item.id} 
-            className="relative cursor-pointer transition transform ease-in-out duration-300 hover:scale-105" 
+            className="relative cursor-pointer p-4 transition transform ease-in-out duration-300 hover:scale-105" 
             onClick={() => openModal(item)}
-            onMouseEnter={() => setHoveredItem(item.id)} // Set hovered item
-            onMouseLeave={() => setHoveredItem(null)} // Clear hovered item
-            onContextMenu={handleContextMenu} // Disable right-click on images/videos
+            onMouseEnter={() => setHoveredItem(item.id)}
+            onMouseLeave={() => setHoveredItem(null)}
+            onContextMenu={handleContextMenu}
           >
             {item.type === 'image' ? (
               <Image src={item.src} alt={`Gallery Item ${item.id}`} className="w-full h-auto rounded-lg" layout="responsive" width={300} height={200} />
@@ -68,14 +73,14 @@ const GalleryPage = () => {
                 Your browser does not support the video tag.
               </video>
             )}
-            {hoveredItem === item.id && ( // Show tooltip only for hovered item
+            {hoveredItem === item.id && (
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-700 text-center text-white text-sm p-4 rounded-xl">
                 {item.description}
               </div>
             )}
           </div>
         ))}
-      </div>
+      </Masonry>
 
       {/* Modal for displaying the selected item */}
       <Modal 
@@ -83,22 +88,22 @@ const GalleryPage = () => {
         onRequestClose={closeModal} 
         className="modal" 
         overlayClassName="overlay"
-        closeTimeoutMS={300} // Duration for closing animation
+        closeTimeoutMS={300}
         style={{
           content: {
             top: '50%',
             left: '50%',
             right: 'auto',
             bottom: 'auto',
-            transform: 'translate(-50%, -50%)', // Center the modal
+            transform: 'translate(-50%, -50%)',
             transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
-            opacity: modalIsOpen ? 1 : 0, // Fade effect
-            transform: modalIsOpen ? 'translate(-50%, -50%) scale(1)' : 'translate(-50%, -50%) scale(0.7)', // Scale effect
+            opacity: modalIsOpen ? 1 : 0,
+            transform: modalIsOpen ? 'translate(-50%, -50%) scale(1)' : 'translate(-50%, -50%) scale(0.7)',
           },
         }}
       >
         <button onClick={closeModal} className="absolute top-8 right-8 text-white bg-black shadow-xl shadow-inset-0 shadow-slate-400 p-6 rounded-full font-thin text-2xl">
-          <TfiClose /> {/* Close icon */}
+          <TfiClose />
         </button>
         {selectedItem && (
           <div className="flex justify-center items-center h-full">

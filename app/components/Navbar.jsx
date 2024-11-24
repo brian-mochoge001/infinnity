@@ -7,11 +7,11 @@ import { usePathname } from 'next/navigation';
 import logo from "../assets/logo.png"
 
 const services = [
-  { name: 'UI/UX Design', path: '/services/ui-ux-design' },
-  { name: 'SEO Optimization', path: '/services/seo-optimization' },
-  { name: 'SaaS Development', path: '/services/saas-development' },
-  { name: 'App Development', path: '/services/app-development' },
-  { name: 'Web Development', path: '/services/web-development' }
+  { name: 'UI/UX Design', path: '/services/design' },
+  { name: 'SEO Optimization', path: '/services/seo' },
+  { name: 'SaaS Development', path: '/services/saas' },
+  { name: 'App Development', path: '/services/appdev' },
+  { name: 'Web Development', path: '/services/webdev' }
 ];
 
 const Navbar = () => {
